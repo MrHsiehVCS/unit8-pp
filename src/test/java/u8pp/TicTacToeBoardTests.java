@@ -24,7 +24,7 @@ public class TicTacToeBoardTests {
     public String[][] boardR2WinSmall = {
         {"X", " ", "O"},
         {"X", "X", "X"},
-        {"O", " ", "X"}
+        {"O", " ", "O"}
     };
     public TicTacToeBoard smallR2Win = new TicTacToeBoard(boardR2WinSmall);
     
@@ -124,7 +124,7 @@ public class TicTacToeBoardTests {
     
 
     public String[][] boardBig4 = {
-        {")", "X", "X", "O", "X"},
+        {"X", "X", "X", "O", "X"},
         {"X", "X", "X", "X", "X"},
         {"X", "X", "X", "X", "O"},
         {"X", "O", "O", "X", "X"},
@@ -134,7 +134,7 @@ public class TicTacToeBoardTests {
     
 
     public String[][] boardBig5 = {
-        {"X", "X", "X", "O", "X"},
+        {"O", "X", "X", "O", "X"},
         {"X", "X", "X", "X", "O"},
         {"X", "X", "O", "O", "X"},
         {"X", "X", "X", "X", "X"},
@@ -210,7 +210,7 @@ public class TicTacToeBoardTests {
         assertEquals(true, big1.hasDiagonalWin());
         assertEquals(true, big2.hasDiagonalWin());
         assertEquals(true, big3.hasDiagonalWin());
-        assertEquals(false, big4.hasDiagonalWin());
+        assertEquals(true, big4.hasDiagonalWin());
         assertEquals(false, big5.hasDiagonalWin());
     }
 
