@@ -64,6 +64,15 @@ The `Flight` class stores all `Reservation`s for a `Flight`. Each `Flight` repre
   - Rows should be separated by a new line
 - The method `getSeats()` that returns the two-dimensional array of seats. This is used for testing purposes, and normally would not be necessary in your program.
 
+## Part C: TicTacToe Win checker
+You will implement functionality to check if there is a win in `TicTacToeBoard.java`. 
+- A tic-tac-toe board is a 2d array of `String`s, indicating `" "`, `"X"`, or `"O"`. 
+- Tic-tac-toe boards may be of any size (2 or greater), and will always be sqaure (same number of rows and columns, all rows are the same length).
+- A win is defined as a row, column, or diagonal containing all `"X"`'s or all `"O"`'s. Diagonals must span from one corner of the board to the opposite corner. 
+
+You will implement `hasHorizontalWin()`, `hasVerticalWin()`, and `hasDiagonalWin()`. Each of these methods are public, returns a boolean, and has no parameters. 
+You are encouraged to create helper function(s). 
+
 ## Grading
 
 - Attempted All Code: 25 points

@@ -3,7 +3,16 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TicTacToeBoardTests {
-    
+
+    String[][] smallEmptyData =
+    {
+        {" ", " ", " "},
+        {" ", " ", " "},
+        {" ", " ", " "}
+    };
+    TicTacToeBoard smallEmpty = new TicTacToeBoard(smallEmptyData);
+
+
     String[][] smallNoWinData =
     {
         {"O", "X", "O"},
@@ -93,6 +102,16 @@ public class TicTacToeBoardTests {
     public TicTacToeBoard smallMultiWin2 = new TicTacToeBoard(boardMultiWin2Small);
     
 
+    public String[][] boardBigEmpty = {
+        {" ", " ", " ", " ", " "},
+        {" ", " ", " ", " ", " "},
+        {" ", " ", " ", " ", " "},
+        {" ", " ", " ", " ", " "},
+        {" ", " ", " ", " ", " "},
+    };
+    public TicTacToeBoard bigEmpty = new TicTacToeBoard(boardBigEmpty);
+
+
     public String[][] boardBig1 = {
         {"X", "X", "O", "X", "O"},
         {"X", "X", "O", "O", "X"},
@@ -144,6 +163,7 @@ public class TicTacToeBoardTests {
     
     @Test
     public void smallBoards_hasHorziontalWin_isCorrect() {
+        assertEquals(false, smallEmpty.hasHorizontalWin());
         assertEquals(false, smallNoWin.hasHorizontalWin());
         assertEquals(true, smallR1Win.hasHorizontalWin());
         assertEquals(true, smallR2Win.hasHorizontalWin());
@@ -159,6 +179,7 @@ public class TicTacToeBoardTests {
 
     @Test
     public void bigBoards_hasHorizontalWin_isCorrect() {
+        assertEquals(false, bigEmpty.hasHorizontalWin());
         assertEquals(false, big1.hasHorizontalWin());
         assertEquals(false, big2.hasHorizontalWin());
         assertEquals(true, big3.hasHorizontalWin());
@@ -168,6 +189,7 @@ public class TicTacToeBoardTests {
 
     @Test
     public void smallBoards_hasVerticalWin_isCorrect() {
+        assertEquals(false, smallEmpty.hasVerticalWin());
         assertEquals(false, smallNoWin.hasVerticalWin());
         assertEquals(false, smallR1Win.hasVerticalWin());
         assertEquals(false, smallR2Win.hasVerticalWin());
@@ -183,6 +205,7 @@ public class TicTacToeBoardTests {
 
     @Test
     public void bigBoards_hasVerticalWin_isCorrect() {
+        assertEquals(false, bigEmpty.hasVerticalWin());
         assertEquals(true, big1.hasVerticalWin());
         assertEquals(false, big2.hasVerticalWin());
         assertEquals(true, big3.hasVerticalWin());
@@ -192,7 +215,7 @@ public class TicTacToeBoardTests {
 
     @Test
     public void smallBoards_hasDiagonalWin_isCorrect() {
-        assertEquals(false, smallNoWin.hasDiagonalWin());
+        assertEquals(false, smallEmpty.hasDiagonalWin());
         assertEquals(false, smallR1Win.hasDiagonalWin());
         assertEquals(false, smallR2Win.hasDiagonalWin());
         assertEquals(false, smallR3Win.hasDiagonalWin());
@@ -207,6 +230,7 @@ public class TicTacToeBoardTests {
     
     @Test
     public void bigBoards_hasDiagonalWin_isCorrect() {
+        assertEquals(false, bigEmpty.hasDiagonalWin());
         assertEquals(true, big1.hasDiagonalWin());
         assertEquals(true, big2.hasDiagonalWin());
         assertEquals(true, big3.hasDiagonalWin());

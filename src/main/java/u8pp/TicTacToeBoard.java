@@ -1,19 +1,13 @@
 package u8pp;
+import java.util.*;
+
 
 public class TicTacToeBoard {
 
-    // spaces are filled with "X", "O", or " " (single space)
-    // boards can come in any size, 
-    // but you are guaranteed that each board has the same number of 
-    // rows and columns (aka square boards only)
-
-    // if you want some example boards, go to TicTacToeCheckerTests.java 
     String[][] data;
 
     public TicTacToeBoard(String[][] data) {
         this.data = data;
-        System.out.println(this);
-        System.out.println();
     }
 
     public String toString() {
@@ -35,20 +29,22 @@ public class TicTacToeBoard {
         return output;
     }
 
+    public boolean hasWin() {
+        return hasDiagonalWin() || hasHorizontalWin() || hasVerticalWin();
+    }
+
     public boolean hasHorizontalWin() {
         /* Your code here */
-        return false;
     }
 
     public boolean hasVerticalWin() {
         /* Your code here */
-        return false;
     }
 
     public boolean hasDiagonalWin() {
         /* Your code here */
-        return false;
     }
 
     /* helper functions go here */
+   
 }
