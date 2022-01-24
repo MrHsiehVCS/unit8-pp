@@ -28,6 +28,36 @@ public class FlightTests {
     }
 
     @Test
+    public void constructor_WhenCalledWithManyEvenColumns_ConstructsTheArrayCorrectly() {
+        testFlight = new Flight(1, 20);
+        Reservation[][] flightSeats = testFlight.getSeats();
+
+
+        assertAll(
+            () -> assertNull(flightSeats[0][0]),
+            () -> assertNull(flightSeats[0][1]),
+            () -> assertNull(flightSeats[0][2]),
+            () -> assertNull(flightSeats[0][3]),
+            () -> assertNull(flightSeats[0][4]),
+            () -> assertNull(flightSeats[0][5]),
+            () -> assertNull(flightSeats[0][6]),
+            () -> assertNull(flightSeats[0][7]),
+            () -> assertNull(flightSeats[0][9]),
+            () -> assertEquals("AISLE", flightSeats[0][10].getPassengerName()),
+            () -> assertNull(flightSeats[0][11]),
+            () -> assertNull(flightSeats[0][12]),
+            () -> assertNull(flightSeats[0][13]),
+            () -> assertNull(flightSeats[0][14]),
+            () -> assertNull(flightSeats[0][15]),
+            () -> assertNull(flightSeats[0][16]),
+            () -> assertNull(flightSeats[0][17]),
+            () -> assertNull(flightSeats[0][18]),
+            () -> assertNull(flightSeats[0][19]),
+            () -> assertNull(flightSeats[0][20])
+        );
+    }
+
+    @Test
     public void constructor_WhenCalledWithOddColumns_ConstructsTheArrayCorrectly() {
         testFlight = new Flight(1, 3);
         Reservation[][] flightSeats = testFlight.getSeats();
@@ -41,8 +71,38 @@ public class FlightTests {
     }
 
     @Test
+    public void constructor_WhenCalledWithManyOddColumns_ConstructsTheArrayCorrectly() {
+        testFlight = new Flight(1, 21);
+        Reservation[][] flightSeats = testFlight.getSeats();
+
+        assertAll(
+            () -> assertNull(flightSeats[0][0]),
+            () -> assertNull(flightSeats[0][1]),
+            () -> assertNull(flightSeats[0][2]),
+            () -> assertNull(flightSeats[0][3]),
+            () -> assertNull(flightSeats[0][4]),
+            () -> assertNull(flightSeats[0][5]),
+            () -> assertNull(flightSeats[0][6]),
+            () -> assertNull(flightSeats[0][7]),
+            () -> assertNull(flightSeats[0][9]),
+            () -> assertNull(flightSeats[0][10]),
+            () -> assertEquals("AISLE", flightSeats[0][11].getPassengerName()),
+            () -> assertNull(flightSeats[0][12]),
+            () -> assertNull(flightSeats[0][13]),
+            () -> assertNull(flightSeats[0][14]),
+            () -> assertNull(flightSeats[0][15]),
+            () -> assertNull(flightSeats[0][16]),
+            () -> assertNull(flightSeats[0][17]),
+            () -> assertNull(flightSeats[0][18]),
+            () -> assertNull(flightSeats[0][19]),
+            () -> assertNull(flightSeats[0][20]),
+            () -> assertNull(flightSeats[0][21])
+        );
+    }
+
+    @Test
     public void getFrequentFlyers_WhenThereAreNoFrequentFlyers_ShouldReturnAnEmptyArrayList() {
-        testFlight = new Flight(1,1);
+        testFlight = new Flight(3,5);
         assertThat(testFlight.getFrequentFlyers(), IsEmptyCollection.empty());
     }
 
@@ -59,7 +119,7 @@ public class FlightTests {
 
     @Test
     public void reserveNextAvailableSeat_WhenThereAreAvailableSeats_ShouldReturnTrue() {
-        testFlight = new Flight(1, 1);
+        testFlight = new Flight(3, 6);
         assertTrue(testFlight.reserveNextAvailableSeat("TestName1", true));
     }
 
@@ -87,6 +147,15 @@ public class FlightTests {
     @Test
     public void reserveNextAvailableSeat_WhenThereAreNoAvailableSeats_ShouldReturnFalse() {
         testFlight = new Flight(1, 0);
+        assertFalse(testFlight.reserveNextAvailableSeat("TestName1", true));
+    }
+
+    @Test
+    public void reserveNextAvailableSeat_WhenThereAreNoAvailableSeats2_ShouldReturnFalse() {
+        testFlight = new Flight(2, 4);
+        for(int i = 0; i < 8; i++) {
+            testFlight.reserveNextAvailableSeat("TestName" + i, i % 2 == 0);
+        }
         assertFalse(testFlight.reserveNextAvailableSeat("TestName1", true));
     }
 
