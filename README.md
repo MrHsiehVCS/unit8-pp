@@ -22,7 +22,7 @@ The `Flight` class stores all `Reservation`s for a `Flight`. Each `Flight` repre
   - the number of rows on the flight
   - the number of seats per row
     - If the number of seats per row is even, you should add a blank seat in the middle to represent an aisle
-    - If the number of seats is odd, you should add a blank seat toward the "right side" of the plane to represent the aisle
+    - If the number of seats is odd, you should add a blank seat in the middle, towards the "right side" of the plane to represent the aisle
     - Aisles should be represented by a bunch of `Reservation`s that have a passenger name of `"AISLE"`
 - An accessor method `getFrequentFlyers()` that returns an `ArrayList<String>` with the names of all the frequent flyers on the `Flight`. If there are no frequent flyers, should return an empty `ArrayList`
 - A mutator method called `reserveNextAvailableSeat(String name, boolean freqFlyer)` that reserves the next open seat for that passenger
