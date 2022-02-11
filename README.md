@@ -29,27 +29,27 @@ The `Flight` class stores all `Reservation`s for a `Flight`. Each `Flight` repre
   - Returns `true` if a seat was reserved and `false` otherwise
   - This should not change any current `Reservation`s in the `Flight`
   - The aisle is not a valid seat to place people in
-  - Next is defined Top to Bottom, Left to Right
+  - Next is defined Left to right, then top to bottom (like how english is read)
 - A mutator method called `reserveAdjacentSeats(String passengerName, boolean firstFrequentFlyer, String passengerNameTwo, boolean secondFrequentFlyer)` that reserves the next pair of adjacent seats
   - If at least 1 pair of empty adjacent seats exist, the method reserves the next pair of empty adjacent seats and returns `true`
   - If no pair of empty adjacent seats exists, the method does not make any reservations and returns `false`
     - Two seats are adjacent if they are in the same row and have consecutive column numbers.
     - This should not change any current `Reservation`s in the `Flight`
     - The aisle is not a valid seat to place people in
-    - Next is defined Top to Bottom, Left to Right
+    - Next is defined Left to right, then top to bottom (like how english is read)
 - The method `reserveWindowSeat(String name, boolean freqFlyer)` attempts to reserve a window seat for the passenger whose name is taken as a parameter.
   - If at least 1 empty window seat exists, the method reserves the next window seat and returns `true`
   - If no empty window seat exists, the method does not make any reservation and returns `false`
     - Method `reserveWindowSeat` does not modify existing `Reservation`s
     - A seat is a window seat if it is the first or last seat in any row
       - Empty seats are represented by `null`
-      - Next is defined Top to Bottom, Left to Right
+      - Next is defined left to right, then top to bottom (like how english is read)
 - The method `reserveAisleSeat(String name, boolean freqFlyer)` attempts to reserve an aisle seat for the passenger whose name is taken as a parameter
   - If at least 1 empty aisle seat exists, the method reserves the next aisle seat and returns `true`
     - Method `reserveAisleSeat` does not modify existing `Reservation`s
     - A seat is an aisle seat if it is the index before or after the aisle's index in a row
       - Empty seats are represented by `null`
-      - Next is defined Top to Bottom, Left to Right
+      - Next is defined left to right, then top to bottom (like how english is read)
 - The method `getIsolatedPassengers()` returns an `ArrayList<String>` of the names of all passengers with no adjacent `Reservation`s
   - A  passenger has no adjacent reservations if each seat adjacent to the  passenger’s seat is empty, or is an aisle
   - The object references in the returned list  may appear in any order
