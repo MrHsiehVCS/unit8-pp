@@ -78,7 +78,7 @@ The specific value of each space is determined by `final` variables that are inc
 
 ## Implementation Hints
 
-Implementation Order: Start from `isFull`, then `isBoardValid`, then `getWinner`. For `getWinner`, do detection for horizontal wins first, then vertical, then the diagonals.
+**Implementation Order**: Start from `isFull`, then `isBoardValid`, then `getWinner`. For `getWinner`, do detection for horizontal wins first, then vertical, then the diagonals. Then, work on the constructors, which will have you thinking about attributes of the class. The default constructor, along with the getters should be easy. Then do the parameterized constructor. Then do `dropPiece`, and `play`.
 
 `isFull`: as soon as you find one empty spot, the board is NOT full.
 
@@ -86,7 +86,9 @@ Implementation Order: Start from `isFull`, then `isBoardValid`, then `getWinner`
 
 `getWinner`: try to do method decomposition. One possible way is to split up the logic for determining what to return, from the logic that finds 4-in-a-rows. You could also split up the logic for each type of 4 in a row. Do whatever makes the problem easier for you to wrap your mind around. Good code doesn't mean least number of lines. Good code means easy to understand.
 
-constructor & `getBoard`: easy peasy
+default constructor & `getBoard` & `getNextPlayer`: easy peasy.
+
+parameterized constructor: you can tell who will go next based on the number of red/yellow pieces that are on the board. 
 
 `dropPiece`: Alternating yellow/red can be done with an instance variable. You might consider making a helper method that checks if a column is full.
 
