@@ -99,8 +99,10 @@ constructor & `getBoard`: easy peasy
 
 ## Grading Breakdown
 
-- Proper formatting/indentation: 2 points
-- Commented all code: 2 points
-- Has no public members other than those specified: 2 points
-- Pass all test cases : 6 pts
-Total: 12 points
+- Code compiles & runs without errors: 1 pts
+- Formatting/indentation: 2 points
+- All code commented: 2 points
+- No public methods/attributes besides the ones specified (additional private methods/attributes are encouraged): 1 point
+- All code is DRY (Don't repeat yourself): 2 points
+- Test cases: 22 points (55 tests, so 0.4 pts each)
+Total: 30 points
