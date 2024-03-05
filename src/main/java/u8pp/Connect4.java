@@ -1,7 +1,5 @@
 package u8pp;
 
-import java.util.Scanner;
-
 public class Connect4 {
 
     public static final int RED_WIN = 0;
