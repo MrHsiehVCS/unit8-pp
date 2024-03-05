@@ -92,7 +92,7 @@ parameterized constructor: you can tell who will go next based on the number of 
 
 `dropPiece`: Alternating yellow/red can be done with an instance variable. You might consider making a helper method that checks if a column is full.
 
-`play`: just use the methods you have alraedy made. If you want, you import the `InputHelper` class from previous projects. 
+`play`: just use the methods you have already made. If you want, you import the `InputHelper` class from previous projects. 
 
 ## Extra credit
 
