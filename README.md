@@ -62,7 +62,7 @@ Boards are 6 tall, by 7 wide. Pieces are added from the top, and pieces fall to 
 
 The specific value of each space is determined by `final` variables that are included in the class (`RED`/`YELLOW`/`EMPTY`).
 
-## `Connect4.java`
+## Part C: `Connect4.java`
 - `public static void printBoard(int[][] board)` - provided for you. Prints the current board. 
 - `public static boolean isFull(int[][] board)` - returns true if all the board spaces have a piece in them. Red pieces are indicated by the static final variable `Connect4.RED` and yellow pieces are indicated by `Connect4.YELLOW`. Empty spaces are indicated by `Connect4.EMPTY`.
 - `public static boolean isBoardValid(int[][] board)` - returns true if the board is a valid configuration. A board is valid if there are no floating pieces, and there are either an equal number of yellow/red pieces, or there is 1 more red piece than yellow pieces.
@@ -105,4 +105,5 @@ constructor & `getBoard`: easy peasy
 - No public methods/attributes besides the ones specified (additional private methods/attributes are encouraged): 1 point
 - All code is DRY (Don't repeat yourself): 2 points
 - Test cases: 22 points (55 tests, so 0.4 pts each)
+
 Total: 30 points
