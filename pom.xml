@@ -9,7 +9,7 @@
   <version>1.0-SNAPSHOT</version>
 
   <name>u8pp</name>
-  <url>https://github.com/dhoffmanvillage/u8pp.git</url>
+  <url>https://github.com/MrHsiehVCS/unit8-pp</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
