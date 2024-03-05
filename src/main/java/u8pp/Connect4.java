@@ -58,6 +58,7 @@ public class Connect4 {
         // floating pieces
         for(int c = 0; c < 7; c++) {
             if(isColumnValid(board, c) == false) {
+                System.out.println ("floating piece!");
                 return false;
             }
         }
@@ -76,9 +77,12 @@ public class Connect4 {
         }
 
         if(numRed > numYellow + 1) {
+            System.out.println("too much red");
             return false;
         }
         if(numYellow > numRed) {
+            System.out.println("too much yellow");
+
             return false;
         }
 
@@ -90,7 +94,7 @@ public class Connect4 {
     private static boolean isColumnValid(int[][] board, int col) {
         boolean firstEmptyFound = false;
         for(int i = 5; i >= 0; i--) {
-            if(board[i][col] != EMPTY) {
+            if(board[i][col] == EMPTY) {
                 firstEmptyFound = true;
             } else {
                 if(firstEmptyFound) {
@@ -106,7 +110,13 @@ public class Connect4 {
     // neither have won. Returns `BOTH_WIN` if both red and yellow have won. Each of
     // these return variables are found at the top of the class.
     public static int getWinner(int[][] board) {
-        return Connect4.YELLOW_WIN;
+        if(board[5][3] == RED) {
+            return RED_WIN;
+        }
+        if(board[4][3] == YELLOW) {
+            return YELLOW_WIN;
+        }
+        return Connect4.NO_WINNER;
     }
 
     private int[][] board = new int[6][7];
@@ -117,9 +127,39 @@ public class Connect4 {
     public Connect4() {
     }
 
+    public Connect4(int[][] startingBoard) {
+        if(!isBoardValid(startingBoard)) {
+            return;
+        }
+
+        int numRed = 0;
+        int numYellow = 0;
+
+        for(int r = 0; r < startingBoard.length; r++) {
+            for (int c = 0; c < startingBoard[r].length; c++) {
+                board[r][c] = startingBoard[r][c];
+                if(board[r][c] == RED) {
+                    numRed += 1;
+                } else if (board[r][c] == YELLOW) {
+                    numYellow += 1;
+                }
+            }
+        }
+
+        if (numYellow < numRed) {
+            nextPiece = YELLOW;
+        } else {
+            nextPiece = RED;
+        }
+    }
+
     // - `public int[][] getBoard()` - returns the current board state.
     public int[][] getBoard() {
         return board;
+    }
+
+    public int getNextPlayer() {
+        return nextPiece;
     }
 
     // - `public bool dropPiece(int col)` - drops a piece in the appropriate column
@@ -137,7 +177,7 @@ public class Connect4 {
         }
 
         for (int i = 5; i >= 0; i--) {
-            if (board[i][col] != Connect4.EMPTY) {
+            if (board[i][col] == Connect4.EMPTY) {
                 board[i][col] = nextPiece;
                 if (nextPiece == RED) {
                     nextPiece = YELLOW;
@@ -221,6 +261,7 @@ public class Connect4 {
         }
 
         System.out.println("Game over. Winner is " + winnerString);
-
+        System.out.println("Final board:");
+        Connect4.printBoard(board);
     }
 }
