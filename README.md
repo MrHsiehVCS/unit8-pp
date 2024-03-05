@@ -1,17 +1,14 @@
 # Unit 8 Programming Project
 
+In this project, you will create a system for reserving seats on a flight, and Connect 4. 
+
 ## Part A: `Reservation` Class
 
-An airline flight reservation system stores information about reservations for each seat on a flight. The `Reservation` class stores the name of the passenger and whether the passenger is a frequent flyer. Your `Reservation` class should include:
+An airline flight reservation system stores information about reservations for each seat on a flight. The `Reservation` class stores the name of the passenger and whether the passenger is a frequent flyer. Create a `Reservation` class that includes:
 
-- A constructor that takes the `name` of the passenger and the `frequentFlyer` status as parameters
+- A constructor that takes the `name` of the passenger (a string) and the `frequentFlyer` status (a boolean) as parameters
 - An accessor method named `getPassengerName()` that returns the passenger's name on the `Reservation`
 - An accessor method named `isFrequentFlyer()` that returns `true` if this passenger is a frequent flyer and `false` otherwise
-
-You may include any other variables and methods you want. The following must also be followed:
-
-- Encapsulation of instance variables
-- JavaDoc all methods and classes
 
 ## Part B: `Flight` Class
 
@@ -23,7 +20,7 @@ The `Flight` class stores all `Reservation`s for a `Flight`. Each `Flight` repre
   - the number of seats per row
     - If the number of seats per row is even, you should add a blank seat in the middle to represent an aisle
     - If the number of seats is odd, you should add a blank seat in the middle, towards the "right side" of the plane to represent the aisle
-    - Aisles should be represented by a bunch of `Reservation`s that have a passenger name of `"AISLE"`
+    - Aisles should be represented by a bunch of `Reservation`s that have a passenger name of `"AISLE"`, that are not frequent fliers
 - An accessor method `getFrequentFlyers()` that returns an `ArrayList<String>` with the names of all the frequent flyers on the `Flight`. If there are no frequent flyers, should return an empty `ArrayList`
 - A mutator method called `reserveNextAvailableSeat(String name, boolean freqFlyer)` that reserves the next open seat for that passenger
   - Returns `true` if a seat was reserved and `false` otherwise
@@ -37,13 +34,6 @@ The `Flight` class stores all `Reservation`s for a `Flight`. Each `Flight` repre
     - This should not change any current `Reservation`s in the `Flight`
     - The aisle is not a valid seat to place people in
     - Next is defined Left to right, then top to bottom (like how english is read)
-- The method `reserveWindowSeat(String name, boolean freqFlyer)` attempts to reserve a window seat for the passenger whose name is taken as a parameter.
-  - If at least 1 empty window seat exists, the method reserves the next window seat and returns `true`
-  - If no empty window seat exists, the method does not make any reservation and returns `false`
-    - Method `reserveWindowSeat` does not modify existing `Reservation`s
-    - A seat is a window seat if it is the first or last seat in any row
-      - Empty seats are represented by `null`
-      - Next is defined left to right, then top to bottom (like how english is read)
 - The method `reserveAisleSeat(String name, boolean freqFlyer)` attempts to reserve an aisle seat for the passenger whose name is taken as a parameter
   - If at least 1 empty aisle seat exists, the method reserves the next aisle seat and returns `true`
     - Method `reserveAisleSeat` does not modify existing `Reservation`s
@@ -64,17 +54,51 @@ The `Flight` class stores all `Reservation`s for a `Flight`. Each `Flight` repre
   - Rows should be separated by a new line
 - The method `getSeats()` that returns the two-dimensional array of seats. This is used for testing purposes, and normally would not be necessary in your program.
 
-## Part C: TicTacToe Win checker
-You will implement functionality to check if there is a win in `TicTacToeBoard.java`. 
-- A tic-tac-toe board is a 2d array of `String`s, indicating `" "`, `"X"`, or `"O"`. 
-- Tic-tac-toe boards may be of any size (2 or greater), and will always be sqaure (same number of rows and columns, all rows are the same length).
-- A win is defined as a row, column, or diagonal containing all `"X"`'s or all `"O"`'s. Diagonals must span from one corner of the board to the opposite corner. 
+## Connect 4 Rules
 
-You will implement `hasHorizontalWin()`, `hasVerticalWin()`, and `hasDiagonalWin()`. Each of these methods are public, returns a boolean, and has no parameters. 
-You are encouraged to create helper function(s). 
+TLDR: If you don't know the rules, google it, or watch a youtube play through.
 
-## Grading
+Boards are 6 tall, by 7 wide. Pieces are added from the top, and pieces fall to the lowest available spot in their column, due to gravity. Pieces may not be added to columns that are full. First person to have 4-in-a-row (vertically, horizontally, or diagonally) wins.
 
-- Attempted All Code: 25 points
-- All Code Properly JavaDoc'ed: 25 points
-- Passes All Test Cases: 50 points
+The specific value of each space is determined by `final` variables that are included in the class (`RED`/`YELLOW`/`EMPTY`).
+
+## `Connect4.java`
+- `public static void printBoard(int[][] board)` - provided for you. Prints the current board. 
+- `public static boolean isFull(int[][] board)` - returns true if all the board spaces have a piece in them. Red pieces are indicated by the static final variable `Connect4.RED` and yellow pieces are indicated by `Connect4.YELLOW`. Empty spaces are indicated by `Connect4.EMPTY`.
+- `public static boolean isBoardValid(int[][] board)` - returns true if the board is a valid configuration. A board is valid if there are no floating pieces, and there are either an equal number of yellow/red pieces, or there is 1 more red piece than yellow pieces.
+- `public static int getWinner(int[][] board)` - returns `RED_WIN` if only red wins, and `YELLOW_WIN` if only yellow wins. Returns `NO_WINNER` if neither have won. Returns `BOTH_WIN` if both red and yellow have won. Each of these return variables are found at the top of the class.
+- `public Connect4()` - constructor that starts the game with an empty board. Initializes anything you might need. 
+- `public int[][] getBoard()` - returns the current board state.
+- `public bool dropPiece(int col)` - drops a piece in the appropriate column (0 for leftmost, 6 for rightmost). Returns true if a piece was dropped. Returns false if the piece cannot be dropped there (out of bounds, or in a full column). Returns false if the game is already over (there is a winner). The color of the piece dropped alternates, based on how many pieces there are. Red always goes first, then yellow. 
+- `public void play(Scanner sc)` - plays the whole game. Please output the whole board every time someone takes a turn. For this method, it should only expect numbers (0-7) to indicate the row. Numbers that do not work for `dropPiece` should not alter the board state. The overall user experience should be easy to follow. This means, show the state of the board before each time you ask for input, and give confirmation when things work, and if an input is bad, tell the user why its bad. 
+
+**Note**: boards are stored as row-major 2D arrays, as is convention. This means that `board[0][4]` will access the top row, 5th column.
+
+## Implementation Hints
+
+Implementation Order: Start from `isFull`, then `isBoardValid`, then `getWinner`. For `getWinner`, do detection for horizontal wins first, then vertical, then the diagonals.
+
+`isFull`: as soon as you find one empty spot, the board is NOT full.
+
+`isBoardValid`: a board is valid if there are no empty spaces under any pieces. A column major traversal is recommended.
+
+`getWinner`: try to do method decomposition. One possible way is to split up the logic for determining what to return, from the logic that finds 4-in-a-rows. You could also split up the logic for each type of 4 in a row. Do whatever makes the problem easier for you to wrap your mind around. Good code doesn't mean least number of lines. Good code means easy to understand.
+
+constructor & `getBoard`: easy peasy
+
+`dropPiece`: Alternating yellow/red can be done with an instance variable. You might consider making a helper method that checks if a column is full.
+
+`play`: just use the methods you have alraedy made. If you want, you import the `InputHelper` class from previous projects. 
+
+## Extra credit
+
+- AI to play against (the smarter the better, but a basic one works too)
+  - if you do this, make a separate play method (ex: `playAI()`)
+
+## Grading Breakdown
+
+- Proper formatting/indentation: 2 points
+- Commented all code: 2 points
+- Has no public members other than those specified: 2 points
+- Pass all test cases : 6 pts
+Total: 12 points
