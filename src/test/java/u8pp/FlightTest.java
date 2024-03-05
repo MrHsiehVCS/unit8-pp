@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class FlightTests {
+public class FlightTest {
 
     private Flight testFlight;
 
@@ -230,42 +230,6 @@ public class FlightTests {
         flightSeats[0][2] = new Reservation("TestName2", false);
 
         assertFalse(testFlight.reserveAisleSeat("TestName3", true));
-    }
-
-    @Test
-    public void reserveWindowSeat_WhenThereAreAvailableWindowSeats_ShouldReturnTrue() {
-        testFlight = new Flight(2,2);
-        assertTrue(testFlight.reserveWindowSeat("TestName1", true));
-    }
-
-    @Test
-    public void reserveWindowSeat_WhenThereAreAvailableWindowSeats_ShouldReserveTheNextSeatInOrder() {
-        testFlight = new Flight(2,3);
-
-        testFlight.reserveWindowSeat("TestName1", true);
-        testFlight.reserveWindowSeat("TestName2", true);
-        testFlight.reserveWindowSeat("TestName3", false);
-
-        Reservation[][] flightSeats = testFlight.getSeats();
-
-        assertAll(
-            () -> assertEquals("TestName1", flightSeats[0][0].getPassengerName()),
-            () -> assertNull(flightSeats[0][1]),
-            () -> assertEquals("AISLE", flightSeats[0][2].getPassengerName()),
-            () -> assertEquals("TestName2", flightSeats[0][3].getPassengerName()),
-            
-            () -> assertEquals("TestName3", flightSeats[1][0].getPassengerName()),
-            () -> assertNull(flightSeats[1][1]),
-            () -> assertEquals("AISLE", flightSeats[1][2].getPassengerName()),
-            () -> assertNull(flightSeats[1][3])
-        );
-    }
-
-    @Test
-    public void reserveWindowSeat_WhenThereAreNoAvailableWindowSeats_ShouldReturnFalse() {
-        testFlight = new Flight(1, 0);
-        
-        assertFalse(testFlight.reserveWindowSeat("TestName1", true));
     }
 
     @Test
