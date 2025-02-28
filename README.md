@@ -20,7 +20,7 @@ The `Flight` class stores all `Reservation`s for a `Flight`. Each `Flight` repre
   - the number of seats per row
     - If the number of seats per row is even, you should add a blank seat in the middle to represent an aisle
     - If the number of seats is odd, you should add a blank seat in the middle, towards the "right side" of the plane to represent the aisle
-    - Aisles should be represented by a bunch of `Reservation`s that have a passenger name of `"AISLE"`, that are not frequent fliers
+    - Aisles should be represented by a bunch of `Reservation`s that have a passenger name of `"AISLE"`, that are not frequent fliers      
 - An accessor method `getFrequentFlyers()` that returns an `ArrayList<String>` with the names of all the frequent flyers on the `Flight`. If there are no frequent flyers, should return an empty `ArrayList`
 - A mutator method called `reserveNextAvailableSeat(String name, boolean freqFlyer)` that reserves the next open seat for that passenger
   - Returns `true` if a seat was reserved and `false` otherwise
@@ -52,7 +52,13 @@ The `Flight` class stores all `Reservation`s for a `Flight`. Each `Flight` repre
   - `Reservation`s that have a passenger should be represented by the passenger's name
   - There should be a single space between each seat. There should be no spaces along the edges of the plane
   - Rows should be separated by a new line
-- The method `getSeats()` that returns the two-dimensional array of seats. This is used for testing purposes, and normally would not be necessary in your program.
+- The method `getSeats()` that returns the two-dimensional array of seats. This is used for testing purposes, and normally would not be necessary in your program.'
+
+### Recommended Implementation Order
+1. the constructor
+2. `toString()`
+3. `getSeats()`
+4. The rest can be completed in any order
 
 ## Connect 4 Rules
 
